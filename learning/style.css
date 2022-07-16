@@ -1,0 +1,18 @@
+body{
+    background-color: bisque;
+}
+p{
+
+    background-color: cornflowerblue;
+}
+table{
+    border-collapse: black;
+    border-style: groove;
+}
+tr,th{
+    border-style: outset;
+    border: rebeccapurple;
+}
+.risha{
+    border: red;
+}
