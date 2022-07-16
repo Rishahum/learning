@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <body>
+        <style>
+            h1{
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            }
+             .navbar>nav{   
+                 /* we can write nav{}also  */
+                display: flex ;
+                justify-content: space-between;
+            }
+            ul, .moral{
+                display: flex;
+            }
+
+            li{
+                list-style: none;
+                margin-left: 2rem;
+            }
+            .moral{
+                text-align: center;
+                margin-top: 2rem;
+
+            }
+            img[src="1img.jpeg"]{
+                margin-left: 2vw;
+                margin-right: 2vw;
+                /*height: 100vw;*/
+                height:60vh;
+                width: 95vw;
+            }
+            .footer{
+                background-color: black;
+                color: blanchedalmond;
+                text-align: center;
+
+            }
+            a:link{
+                color:black;
+                text-decoration: none;
+            }
+            .moral>div{
+                padding: 1rem;
+            }
+        </style>
+        </head>
+        <div class="navbar">
+            <nav>
+    <h1>DEV 101</h1>
+    <ul>
+        <a href="#scroll">
+        <li>HTML</li></a>
+        <a href="#scroll">
+        <li>CSS</li></a>
+        <a href="#scroll">
+        <li>JAVASCRIPT</li></a>
+        </ul>
+        </nav>
+        </div>
+       <!-- //first part ends// -->
+       
+       <img src="1img.jpeg">
+       
+       <!-- //second part ends// -->
+       <div class="moral" id="scroll">
+           <div>
+               <img src="html.png">
+               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet aut excepturi a nesciunt vitae quibusdam quae doloribus, reprehenderit, laborum omnis molestias, perspiciatis quia consectetur possimus explicabo facere mollitia. Eius, error!</p>
+           </div>
+           <div>
+               <img src="css.png">
+               <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione eligendi sed quibusdam, beatae facere vitae expedita adipisci aliquid, laboriosam fuga, illo inventore officiis fugiat sit quo soluta ipsam magni maiores?</p>
+           </div>
+           <div>
+               <img src="java.png">
+               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quae facere quia, est officiis dolore excepturi soluta illum nostrum ut porro minus. Explicabo vero ipsa, quis nemo accusamus iste distinctio!</p>
+           </div>
+       </div>
+       <div class="footer">
+           <p>&copy pepcoding@2022</p>
+           <p>All right reserved | Terms of use | Privacy Policy</p>
+       </div>
+
+    
+    </body>
+</html>

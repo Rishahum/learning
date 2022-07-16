@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Say Hello</button>
+    <button>One more button</button>
+    <script>
+        let btn=document.querySelector("button");
+        btn.addEventListener("click",function(){
+            //create a element p
+            let pEle=document.createElement("p");
+            //add text that will display on screen after clicking button
+            pEle.innerText="hello";
+            //select the body element
+            let body=document.querySelector("body");
+            //add the element in the html document
+            body.appendChild(pEle);
+        })
+    </script>
+</body>
+</html>
