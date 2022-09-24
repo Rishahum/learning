@@ -124,5 +124,14 @@ Css use katre*/
   }
   .main-cont{
     display: flex;
+    flex-wrap: wrap;
+  }
+  .ticket-lock{
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    height:2rem;
+    margin-top: -29px;
+    margin-right: 11px;
   }
     

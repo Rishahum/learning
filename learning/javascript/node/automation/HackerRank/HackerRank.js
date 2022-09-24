@@ -49,12 +49,15 @@ browserOpenPromise
 })
 .then(function(){
     function getAllQuesLink(){
-        let allEleArr=document.querySelectorAll(`a[class="js-track-click challenge-list-item"]`);
+        let allEleArr=document.querySelectorAll(`.js-track-click.challenge-list-item`);
+        //a[class="js-track-click challenge-list-item"]
         let linkArr=[];
         for(let i=0;i<allEleArr.length;i++){
             linkArr.push(allEleArr[i].getAttribute("href"));
         }
+        console.log(linkArr);
         return linkArr;
+        
     }
      let linkArrPromise=cTab.evaluate(getAllQuesLink);
      return linkArrPromise;
@@ -66,7 +69,12 @@ browserOpenPromise
 .then(function(linkArr){
     console.log("link aa gya");
     //console.log(linkArr);
-    let quesWillBeSolved=quesSolver(linkArr[0],0);
+    let quesWillBeSolved=quesSolver(linkArr[2],2);
+    for (let i = 1; i < linkArr.length; i++){
+       let questionWillBeSolvedPromise = questionWillBeSolvedPromise.then(function () {
+          return questionSolver(linkArr[i], i);
+        })
+    }
    return quesWillBeSolved;
 
 })
@@ -86,7 +94,7 @@ function waitAndClick(algoBtn){
         })
         .then(function(){
             console.log("algo button is clicked");
-            
+            resolve();
         })
         
         .catch(function(err){
@@ -106,29 +114,38 @@ function quesSolver(url, idx){
           // let waitForCheckboxClick=waitAndClick(".checkbox-input");
           // return waitForCheckboxClick
             //resolve();
-        })
-        .then(function(){
+            let waitForCheckBoxAndClickPromise = waitAndClick(".checkbox-input");
+        return waitForCheckBoxAndClickPromise;
+      })
+      .then(function () {
+        //select the box where code will be typed
+        let waitForTextBoxPromise = cTab.waitForSelector(".custominput");
+        return waitForTextBoxPromise;
+      })
+    
+       /* .then(function(){
             //type in text area of custom
             let waitForTextboxPromise=cTab.waitForSelector(".checkbox-wrap");
             return waitForTextboxPromise;
-        })
+        })*/
         .then(function(){
             let codeWillBeTypesPromise=cTab.type(".custominput",answers[idx]);
             return codeWillBeTypesPromise;
         })
         .then(function(){
             //control is pressed promise
-            console.log("control");
+            //console.log("control");
             let controlPressedPromise=cTab.keyboard.press("Control");
             return controlPressedPromise;
         })
         .then(function(){
             //key a is pressed
+            console.log("a");
             let aKeyPressedPromise=cTab.keyboard.press("a");
             return aKeyPressedPromise;
         })
         .then(function(){
-            //
+            console.log("x");
             let xKeyPressedPromise=cTab.keyboard.press("x");
             return xKeyPressedPromise;
         })
@@ -137,11 +154,12 @@ function quesSolver(url, idx){
             return cursorOnEditorPromise;
         })
         .then(function(){
+            console.log("v");
             let vKeyPressedPromise=cTab.keyboard.press("v");
             return vKeyPressedPromise;
         })
         .then(function(){
-            let clicksubmit=cTab.click(".ui-btn ui-btn-normal.ui-btn-primary.pull-right");
+            let clicksubmit=cTab.click(".ui-btn.ui-btn-normal.ui-btn-primary.pull-right");
             return clicksubmit;
             
         })

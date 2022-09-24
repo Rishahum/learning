@@ -32,15 +32,20 @@
       //   Solution:
       //hw 
     //   hint: click event use kro ,innerText, setInterval, clearInterval
+    let timer=document.querySelector("h1");
+    let count=0;
     let buttonpress=document.querySelector("button");
     let countdown=document.querySelector("h1");
     buttonpress.addEventListener("click",fn);
-    for(let i=1;i<=10;i++){
-        setTimeout(function fn(){
-        countdown.innerText=i;
-    },2000);
+    function fn(){
+      function displayTime(){
+        timer=count;
+       count++;
+       timer.innerText=`${count}`;
+      } 
+      setInterval(displayTime,1000);
     }
-    
+
 
     </script>
 </body>
