@@ -183,6 +183,7 @@ removebtn.addEventListener("click",function(){
     }
     iscolor=!iscolor;
 })
+//remove ticket from local storage
 function handleRemove(id,ticket){
     ticket.addEventListener("click",function(){
         if(iscolor==true){
@@ -209,7 +210,7 @@ function handleColor(ticket,id,ticketColor){
        /* function getTicketColor(currentColorStrip){
             let tc=ticketsArr.findIndex(function(ticketObj){
               return   ticketObj.ticketColor==currentColorStrip; we can't use this because ticketColor ${ticketcolor} class hai na ki sirf ticketColor
-            })
+            })x
         }*/
         let idx=colors.indexOf(currentColorStrip);
         let IDX=idx+1;
@@ -226,36 +227,36 @@ function handleColor(ticket,id,ticketColor){
 
 
 
-function handleLock(ticket,id){
-    let isLockOpen=false;
+// function handleLock(ticket,id){
+//     let isLockOpen=false;
    
 
-    if(!isLockOpen){
+//     if(!isLockOpen){
        
-        let ticketLock=ticket.querySelector(".ticket-lock");
+//         let ticketLock=ticket.querySelector(".ticket-lock");
    
     
-    ticketLock.addEventListener("click",function(e){
-        let ticketArea=ticket.querySelector(".task-area");
-        ticketLock.remove(lockClass);
-        ticketLock.append(unlockClass);
+//     ticketLock.addEventListener("click",function(e){
+//         let ticketArea=ticket.querySelector(".task-area");
+//         ticketLock.remove(lockClass);
+//         ticketLock.append(unlockClass);
      
-        ticketArea.setAttribute("contenteditable","true");
+//         ticketArea.setAttribute("contenteditable","true");
         
-       // e.classList.add(ti)
-        let ticketIdx = getTicketIdx(id);
-       ticketsArr[ticketIdx].data = ticketArea.innerText;
-    localStorage.setItem("tickets", JSON.stringify(ticketsArr));
-    })
-}
-else{
+//        // e.classList.add(ti)
+//         let ticketIdx = getTicketIdx(id);
+//        ticketsArr[ticketIdx].data = ticketArea.innerText;
+//     localStorage.setItem("tickets", JSON.stringify(ticketsArr));
+//     })
+// }
+// else{
     
-}
-isLockOpen=!isLockOpen;
+// }
+// isLockOpen=!isLockOpen;
 
-}
+// }
 
-/*function handleLock(ticket, id) {
+function handleLock(ticket, id) {
     //icons ko append in ticket
     
     let ticketLockEle = ticket.querySelector(".ticket-lock");
@@ -281,6 +282,6 @@ isLockOpen=!isLockOpen;
       ticketsArr[ticketIdx].data = ticketTaskArea.innerText;
       localStorage.setItem("tickets", JSON.stringify(ticketsArr));
     });
-  }*/
+  }
 
 
