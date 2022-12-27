@@ -1,10 +1,14 @@
 import React, {Component} from 'react'
 import { movies } from './getMovies'
+import axios from 'axios'
+//import { API_KEY } from './secret'
 export default class list extends Component{
   constructor(){
     super();
    this.state={
     hoverr:"",
+    currPage:4,
+    movies:[]
    }
     
    
@@ -21,20 +25,32 @@ export default class list extends Component{
       hoverr: "",
     });
   };
+  async componentDidMount(){
+    console.log("component is called");
+    //console.log(API_KEY);
+    // let res=await axios.get("https://api.themoviedb.org/3/movie/550?api_key=5e74cc2ecfc48d2dadfb3568b68d8265")
+    let ans = await axios.get(
+      `https://api.themoviedb.org/3/movie/popular?api_key=5e74cc2ecfc48d2dadfb3568b68d8265&language=en-US&page=${this.state.currPage}`
+    );
+    console.log(ans.data);
+    this.setState({
+      movies:[...ans.data.results]
+    })
+  }
 
 
     render(){
-      let movie=movies.results;
+      //let movie=movies.results;
         return(
             <> 
             {/* <></> we can only use this in react not in html babbel */}
-          {movie.length==0?(
-            <div class="spinner-grow" role="status">
-            <span class="visually-hidden">Loading...</span>
+          {this.state.movies.length==0?(
+            <div className="spinner-grow" role="status">
+            <span className="visually-hidden">Loading...</span>
           </div>
           ):( <div className='text-center'><strong>Trending</strong></div>)}
           <div className='movie-list'>
-          {movie.map((mapObj)=> (
+          {this.state.movies.map((mapObj)=> (
             //  <div className="card movie-card" 
             //   onMouseEnter={()=>this.handleEnter(movie.id)}
             //   onMouseLeave={
@@ -62,9 +78,7 @@ export default class list extends Component{
           
           ))}
           </div>
-          <div>
-            <textarea>{onkeydown="shift"}</textarea>
-          </div>
+          
           <nav aria-label="...">
   <ul class="pagination">
     <li class="page-item disabled">
