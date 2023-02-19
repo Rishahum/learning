@@ -7,12 +7,10 @@ export default class list extends Component{
     super();
    this.state={
     hoverr:"",
+    arr:[],
     currPage:4,
     movies:[]
-   }
-    
-   
-    
+   } 
   }
   handleEnter = (id) => {
     this.setState({
@@ -37,7 +35,6 @@ export default class list extends Component{
       movies:[...ans.data.results]
     })
   }
-
 
     render(){
       //let movie=movies.results;
